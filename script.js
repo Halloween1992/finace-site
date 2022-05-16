@@ -134,26 +134,6 @@ allSections.forEach(section => {
   // section.classList.add('section--hidden');
 });
 
-// lazy load
-const LazyLoad = function (enterise, obersver) {
-  const [entery] = enterise;
-  if (!entery.isIntersecting) return;
-  entery.target.src = entery.target.dataset.src;
-  entery.target.addEventListener('load', function () {
-    entery.target.classList.remove('lazy-img');
-  });
-  obersver.unobserve(entery.target);
-};
-const imgObserve = new IntersectionObserver(LazyLoad, {
-  root: null,
-  threshold: 0,
-  rootMargin: '200px',
-});
-
-const allImg = document.querySelectorAll('img[data-src]');
-
-allImg.forEach(img => imgObserve.observe(img));
-
 // slider
 const slider = function () {
   const slides = document.querySelectorAll('.slide');
